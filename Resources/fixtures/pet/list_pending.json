@@ -1,0 +1,98 @@
+[
+  {
+    "payload": {
+      "id": 110,
+      "category": {
+        "id": 1,
+        "name": "Canino"
+      },
+      "name": "Pet_110",
+      "photoUrls": [
+        "none"
+      ],
+      "tags": [
+        {
+          "id": 110,
+          "name": "Pet_100"
+        }
+      ],
+      "status.": "pending"
+    },
+    "data": {
+      "additionalMetadata": "Foto do Pet_110"
+    },
+    "thumbnail": "pet.jpg"
+  },
+  {
+    "payload": {
+      "id": 111,
+      "category": {
+        "id": 1,
+        "name": "Canino"
+      },
+      "name": "Pet_111",
+      "photoUrls": [
+        "none"
+      ],
+      "tags": [
+        {
+          "id": 101,
+          "name": "Pet_111"
+        }
+      ],
+      "status.": "pending"
+    },
+    "data": {
+      "additionalMetadata": "Foto do Pet_111"
+    },
+    "thumbnail": "pet.jpg"
+  },
+  {
+    "payload": {
+      "id": 112,
+      "category": {
+        "id": 1,
+        "name": "Canino"
+      },
+      "name": "Pet_112",
+      "photoUrls": [
+        "none"
+      ],
+      "tags": [
+        {
+          "id": 112,
+          "name": "Pet_112"
+        }
+      ],
+      "status.": "pending"
+    },
+    "data": {
+      "additionalMetadata": "Foto do Pet_112"
+    },
+    "thumbnail": "pet.jpg"
+  },
+  {
+    "payload": {
+      "id": 113,
+      "category": {
+        "id": 1,
+        "name": "Canino"
+      },
+      "name": "Pet_113",
+      "photoUrls": [
+        "none"
+      ],
+      "tags": [
+        {
+          "id": 3,
+          "name": "Pet_113"
+        }
+      ],
+      "status.": "pending"
+    },
+    "data": {
+      "additionalMetadata": "Foto do Pet_113"
+    },
+    "thumbnail": "pet.jpg"
+  }
+]

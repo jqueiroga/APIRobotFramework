@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.5 on win32)" generated="20211122 23:18:02.429" rpa="false" schemaversion="2">
+<suite id="s1" name="Get User Feature" source="C:\Repository\ApiRobot\backend\feature\specs\user\get_user_feature.robot">
+<test id="s1-t1" name="Found User">
+<kw name="Dado que esteja testando a rotina de usuários" library="BDDpt-br" sourcename="Dado ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Que esteja testando a rotina de usuários" library="patterns_steps">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Testando rotina user do serviço do petstore</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20211122 23:18:02.589" endtime="20211122 23:18:02.590"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.589" endtime="20211122 23:18:02.590"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.589" endtime="20211122 23:18:02.590"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.589" endtime="20211122 23:18:02.590"/>
+</kw>
+<kw name="Quando envio o formulário para consultar um usuário existente" library="BDDpt-br" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Envio o formulário para consultar um usuário existente" library="get_user_step">
+<kw name="Get Json" library="Helpers">
+<var>${user}</var>
+<arg>user</arg>
+<arg>user_101.json</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${fixture}</var>
+<arg>${EXEC_DIR}/Resources/fixtures/${route}/${file_ame}\</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20211122 23:18:02.592" level="INFO" html="true">Getting file '&lt;a href="file://C:\Repository\ApiRobot\backend\feature\Resources\fixtures\user\user_101.json"&gt;C:\Repository\ApiRobot\backend\feature\Resources\fixtures\user\user_101.json&lt;/a&gt;'.</msg>
+<msg timestamp="20211122 23:18:02.593" level="INFO">${fixture} = {
+    "id": 101,
+    "username": "User101",
+    "firstName": "Usuário 101",
+    "lastName": "do sistema",
+    "email": "usuario101@petstore.com",
+    "password": "pwd123",
+    "phone": "1291234567",
+ ...</msg>
+<status status="PASS" starttime="20211122 23:18:02.592" endtime="20211122 23:18:02.593"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${json}</var>
+<arg>json.loads($fixture)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211122 23:18:02.596" level="INFO">${json} = {'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:02.593" endtime="20211122 23:18:02.596"/>
+</kw>
+<msg timestamp="20211122 23:18:02.596" level="INFO">${user} = {'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:02.592" endtime="20211122 23:18:02.596"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${user}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20211122 23:18:02.596" level="INFO">${user} = {'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:02.596" endtime="20211122 23:18:02.596"/>
+</kw>
+<kw name="POST User" library="User">
+<arg>${user}</arg>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/v2/user</arg>
+<arg>json=${user}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20211122 23:18:03.234" level="INFO">POST Request : url=https://petstore.swagger.io/v2/user 
+ path_url=/v2/user 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '191', 'Content-Type': 'application/json'} 
+ body=b'{"id": 101, "username": "User101", "firstName": "Usu\\u00e1rio 101", "lastName": "do sistema", "email": "usuario101@petstore.com", "password": "pwd123", "phone": "1291234567", "userStatus": 0}' 
+ </msg>
+<msg timestamp="20211122 23:18:03.234" level="INFO">POST Response : url=https://petstore.swagger.io/v2/user 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 23 Nov 2021 02:18:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"101"} 
+ </msg>
+<msg timestamp="20211122 23:18:03.234" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 23:18:02.597" endtime="20211122 23:18:03.234"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.597" endtime="20211122 23:18:03.235"/>
+</kw>
+<kw name="GET User" library="User">
+<var>${response_user}</var>
+<arg>${user}</arg>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/v2/user/${user}[username]</arg>
+<arg>json=${user}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20211122 23:18:03.694" level="INFO">GET Request : url=https://petstore.swagger.io/v2/user/User101 
+ path_url=/v2/user/User101 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '191', 'Content-Type': 'application/json'} 
+ body=b'{"id": 101, "username": "User101", "firstName": "Usu\\u00e1rio 101", "lastName": "do sistema", "email": "usuario101@petstore.com", "password": "pwd123", "phone": "1291234567", "userStatus": 0}' 
+ </msg>
+<msg timestamp="20211122 23:18:03.694" level="INFO">GET Response : url=https://petstore.swagger.io/v2/user/User101 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 23 Nov 2021 02:18:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'close', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":101,"username":"User101","firstName":"Usuário 101","lastName":"do sistema","email":"usuario101@petstore.com","password":"pwd123","phone":"1291234567","userStatus":0} 
+ </msg>
+<msg timestamp="20211122 23:18:03.694" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 23:18:03.236" endtime="20211122 23:18:03.695"/>
+</kw>
+<msg timestamp="20211122 23:18:03.695" level="INFO">${response_user} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 23:18:03.235" endtime="20211122 23:18:03.695"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20211122 23:18:03.695" level="INFO">${response_user} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 23:18:03.695" endtime="20211122 23:18:03.695"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.591" endtime="20211122 23:18:03.695"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.591" endtime="20211122 23:18:03.695"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.591" endtime="20211122 23:18:03.696"/>
+</kw>
+<kw name="Então a rotina deverá retornar status de sucesso" library="BDDpt-br" sourcename="Então ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="A rotina deverá retornar status de sucesso" library="patterns_steps">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response_user}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20211122 23:18:03.697" endtime="20211122 23:18:03.697"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.697" endtime="20211122 23:18:03.697"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.696" endtime="20211122 23:18:03.697"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.696" endtime="20211122 23:18:03.697"/>
+</kw>
+<kw name="E a rotina deverá retornar o payload do usuário pesquisado" library="BDDpt-br" sourcename="E ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="A rotina deverá retornar o payload do usuário pesquisado" library="get_user_step">
+<kw name="Get Json" library="Helpers">
+<var>${user}</var>
+<arg>user</arg>
+<arg>user_101.json</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${fixture}</var>
+<arg>${EXEC_DIR}/Resources/fixtures/${route}/${file_ame}\</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20211122 23:18:03.700" level="INFO" html="true">Getting file '&lt;a href="file://C:\Repository\ApiRobot\backend\feature\Resources\fixtures\user\user_101.json"&gt;C:\Repository\ApiRobot\backend\feature\Resources\fixtures\user\user_101.json&lt;/a&gt;'.</msg>
+<msg timestamp="20211122 23:18:03.700" level="INFO">${fixture} = {
+    "id": 101,
+    "username": "User101",
+    "firstName": "Usuário 101",
+    "lastName": "do sistema",
+    "email": "usuario101@petstore.com",
+    "password": "pwd123",
+    "phone": "1291234567",
+ ...</msg>
+<status status="PASS" starttime="20211122 23:18:03.699" endtime="20211122 23:18:03.700"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${json}</var>
+<arg>json.loads($fixture)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211122 23:18:03.701" level="INFO">${json} = {'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:03.700" endtime="20211122 23:18:03.701"/>
+</kw>
+<msg timestamp="20211122 23:18:03.701" level="INFO">${user} = {'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:03.699" endtime="20211122 23:18:03.701"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211122 23:18:03.702" level="INFO">{'id': 101, 'username': 'User101', 'firstName': 'Usuário 101', 'lastName': 'do sistema', 'email': 'usuario101@petstore.com', 'password': 'pwd123', 'phone': '1291234567', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20211122 23:18:03.701" endtime="20211122 23:18:03.702"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${response_user.json()}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211122 23:18:03.702" endtime="20211122 23:18:03.702"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.699" endtime="20211122 23:18:03.702"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.699" endtime="20211122 23:18:03.702"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:03.698" endtime="20211122 23:18:03.703"/>
+</kw>
+<status status="PASS" starttime="20211122 23:18:02.588" endtime="20211122 23:18:03.703"/>
+</test>
+<doc>User Rotine Tests Suite</doc>
+<status status="PASS" starttime="20211122 23:18:02.430" endtime="20211122 23:18:03.706"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Get User Feature">Get User Feature</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,24 @@
+{
+    "payload": {
+      "id": 51,
+      "category": {
+        "id": 2,
+        "name": "felino"
+      },
+      "name": "Bella",
+      "photoUrls": [
+        "bella.jpg"
+      ],
+      "tags": [
+        {
+          "id": 51,
+          "name": "Bella"
+        }
+      ],
+      "status.": "available"
+    },
+    "data":{
+      "additionalMetadata": "Bella de Perfil"
+    },
+    "thumbnail": "bella.jpg"
+  }

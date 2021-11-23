@@ -1,0 +1,10 @@
+{
+    "id": 101,
+    "username": "User101",
+    "firstName": "Usuário 101",
+    "lastName": "do sistema",
+    "email": "usuario101@petstore.com",
+    "password": "pwd123",
+    "phone": "1291234567",
+    "userStatus": 0
+}

@@ -1,0 +1,24 @@
+{
+  "payload": {
+    "id": 50,
+    "category": {
+      "id": 1,
+      "name": "Canina"
+    },
+    "name": "Lunna Maria",
+    "photoUrls": [
+      "lunna.jpg"
+    ],
+    "tags": [
+      {
+        "id": 20,
+        "name": "Lunna Maria"
+      }
+    ],
+    "status.": "available"
+  },
+  "data":{
+    "additionalMetadata": "Foto Perfil"
+  },
+  "thumbnail": "lunna.jpg"
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.5 on win32)" generated="20211122 19:05:37.858" rpa="false" schemaversion="2">
+<suite id="s1" name="DeletePetTests" source="C:\Repository\Curso Automação API com RobotFramework\backend\tests\pet\DeletePetTests.robot">
+<test id="s1-t1" name="Delete Unique Pet">
+<kw name="Get Json" library="Helpers">
+<var>${pet}</var>
+<arg>pet</arg>
+<arg>pet_to_delete.json</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${fixture}</var>
+<arg>${EXEC_DIR}/Resources/fixtures/${route}/${file_ame}\</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20211122 19:05:38.351" level="INFO" html="true">Getting file '&lt;a href="file://C:\Repository\Curso Automação API com RobotFramework\backend\Resources\fixtures\pet\pet_to_delete.json"&gt;C:\Repository\Curso Automação API com RobotFramework\backend\Resources\fixtures\pet\pet_to_delete.json&lt;/a&gt;'.</msg>
+<msg timestamp="20211122 19:05:38.351" level="INFO">${fixture} = {
+  "payload": {
+    "id": 55,
+    "category": {
+      "id": 5,
+      "name": "peixe"
+    },
+    "name": "Nemo",
+    "photoUrls": [
+      "none"
+    ],
+    "tags": [
+      {
+        "id": 55,
+        ...</msg>
+<status status="PASS" starttime="20211122 19:05:38.350" endtime="20211122 19:05:38.351"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${json}</var>
+<arg>json.loads($fixture)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211122 19:05:38.354" level="INFO">${json} = {'payload': {'id': 55, 'category': {'id': 5, 'name': 'peixe'}, 'name': 'Nemo', 'photoUrls': ['none'], 'tags': [{'id': 55, 'name': 'Peixe Palhaço'}], 'status.': 'available'}, 'data': {'additionalMetada...</msg>
+<status status="PASS" starttime="20211122 19:05:38.351" endtime="20211122 19:05:38.354"/>
+</kw>
+<msg timestamp="20211122 19:05:38.355" level="INFO">${pet} = {'payload': {'id': 55, 'category': {'id': 5, 'name': 'peixe'}, 'name': 'Nemo', 'photoUrls': ['none'], 'tags': [{'id': 55, 'name': 'Peixe Palhaço'}], 'status.': 'available'}, 'data': {'additionalMetada...</msg>
+<status status="PASS" starttime="20211122 19:05:38.349" endtime="20211122 19:05:38.355"/>
+</kw>
+<kw name="POST Pet" library="Pet">
+<var>${result}</var>
+<arg>${pet}</arg>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/v2/pet</arg>
+<arg>json=${pet}[payload]</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20211122 19:05:38.947" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '165', 'Content-Type': 'application/json'} 
+ body=b'{"id": 55, "category": {"id": 5, "name": "peixe"}, "name": "Nemo", "photoUrls": ["none"], "tags": [{"id": 55, "name": "Peixe Palha\\u00e7o"}], "status.": "available"}' 
+ </msg>
+<msg timestamp="20211122 19:05:38.948" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 22 Nov 2021 22:05:38 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":55,"category":{"id":5,"name":"peixe"},"name":"Nemo","photoUrls":["none"],"tags":[{"id":55,"name":"Peixe Palhaço"}]} 
+ </msg>
+<msg timestamp="20211122 19:05:38.948" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:38.356" endtime="20211122 19:05:38.948"/>
+</kw>
+<msg timestamp="20211122 19:05:38.949" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:38.355" endtime="20211122 19:05:38.949"/>
+</kw>
+<kw name="Delete Pet" library="Pet">
+<var>${response}</var>
+<arg>${pet}</arg>
+<arg>${USE_KEY}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>api_key=${api_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211122 19:05:38.953" level="INFO">&amp;{headers} = { api_key=123456 }</msg>
+<status status="PASS" starttime="20211122 19:05:38.952" endtime="20211122 19:05:38.953"/>
+</kw>
+<kw name="DELETE" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/v2/pet/${pet}[payload][id]</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request.</doc>
+<msg timestamp="20211122 19:05:39.458" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/55 
+ path_url=/v2/pet/55 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'api_key': '123456', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20211122 19:05:39.458" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/55 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 22 Nov 2021 22:05:38 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"55"} 
+ </msg>
+<msg timestamp="20211122 19:05:39.458" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:38.953" endtime="20211122 19:05:39.458"/>
+</kw>
+<msg timestamp="20211122 19:05:39.458" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:38.951" endtime="20211122 19:05:39.458"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20211122 19:05:39.459" endtime="20211122 19:05:39.459"/>
+</kw>
+<kw name="GET Pet By Id" library="Pet">
+<var>${response}</var>
+<arg>${pet}</arg>
+<arg>${USE_KEY}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>api_key=${api_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211122 19:05:39.460" level="INFO">&amp;{headers} = { api_key=123456 }</msg>
+<status status="PASS" starttime="20211122 19:05:39.460" endtime="20211122 19:05:39.460"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/v2/pet/${pet}[payload][id]</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20211122 19:05:39.953" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/55 
+ path_url=/v2/pet/55 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'api_key': '123456'} 
+ body=None 
+ </msg>
+<msg timestamp="20211122 19:05:39.953" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/55 
+ status=404, reason=Not Found 
+ headers={'Date': 'Mon, 22 Nov 2021 22:05:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":1,"type":"error","message":"Pet not found"} 
+ </msg>
+<msg timestamp="20211122 19:05:39.953" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:39.461" endtime="20211122 19:05:39.954"/>
+</kw>
+<msg timestamp="20211122 19:05:39.954" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20211122 19:05:39.460" endtime="20211122 19:05:39.954"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>404</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20211122 19:05:39.954" endtime="20211122 19:05:39.955"/>
+</kw>
+<status status="PASS" starttime="20211122 19:05:38.348" endtime="20211122 19:05:39.955"/>
+</test>
+<doc>Delete Pet Tests</doc>
+<status status="PASS" starttime="20211122 19:05:37.861" endtime="20211122 19:05:39.957"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="DeletePetTests">DeletePetTests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

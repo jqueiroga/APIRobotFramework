@@ -1,0 +1,24 @@
+{
+    "payload": {
+      "id": 52,
+      "category": {
+        "id": 3,
+        "name": "ave"
+      },
+      "name": "Loro",
+      "photoUrls": [
+        "papagaio.jpg"
+      ],
+      "tags": [
+        {
+          "id": 52,
+          "name": "Loro"
+        }
+      ],
+      "status.": "available"
+    },
+    "data":{
+      "additionalMetadata": "Papagaio falante"
+    },
+    "thumbnail": "papagaio.jpg"
+  }

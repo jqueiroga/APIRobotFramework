@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Tony Stark",
+        "email": "tony@stark.com",
+        "password": "pwd123"
+    },
+    {
+        "name": "Peter Parker",
+        "email": "peter@parker.com",
+        "password": "pwd123"
+    },
+    {
+        "name": "Jeremias Araújo",
+        "email": "jeremias@araujo.com.br",
+        "password": "pwd123"
+    }
+]

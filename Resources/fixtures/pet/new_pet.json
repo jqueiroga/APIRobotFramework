@@ -1,0 +1,24 @@
+{
+  "payload": {
+    "id": 50,
+    "category": {
+      "id": 1,
+      "name": "canino"
+    },
+    "name": "Lunna",
+    "photoUrls": [
+      "none"
+    ],
+    "tags": [
+      {
+        "id": 20,
+        "name": "Lunna"
+      }
+    ],
+    "status.": "available"
+  },
+  "data":{
+    "additionalMetadata": "LunnaPhoto"
+  },
+  "thumbnail": "lunna.jpg"
+}
